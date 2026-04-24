@@ -45,7 +45,7 @@ getOverLay.addEventListener("click",deactivate);
 document.getElementById("form").addEventListener("submit", function(e) {
   e.preventDefault(); // stop page reload
 
-  const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbyN9WcBd-pJR27ZrYPVhvbHNrTrXDyYqfn4MwlVBxy8shT5G7nBO-Ql12AwXlt4Owwu/exec"; 
+  const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbzNYUc1STxX0jni49QnKYL5XwnnQsM-EQRFNUWRaWhXhww7M6mw2Hzc4SfZ3u7Bsl8u/exec"; 
 
   const data = {
     name: this.name.value,
