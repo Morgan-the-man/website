@@ -42,7 +42,7 @@ getOverLay.addEventListener("click",deactivate);
 
 
 
-document.getElementById("sheetForm").addEventListener("submit", function(e) {
+document.getElementById("form").addEventListener("submit", function(e) {
   e.preventDefault(); // stop page reload
 
   const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbyN9WcBd-pJR27ZrYPVhvbHNrTrXDyYqfn4MwlVBxy8shT5G7nBO-Ql12AwXlt4Owwu/exec"; 
