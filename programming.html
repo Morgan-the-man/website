@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <title>programming</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <meta name="description" content="We build projects that we feel are cool with the programing languages we learn">
+  <link rel="logo" src="logo.jpeg">
+  <link rel="stylesheet" href="style.css">
+   <style>
+  body{
+   background-image:url(programming.jpeg);
+   background-attachment:center;
+   background-repeat:no-repeat;
+   background-size:cover;
+  }   
+   </style>
+  </head>
+  <body>
+    <header>
+      <div id="main-header">
+       <button id="open-side-bar">☰ MENU</button>
+       <div id="left-header">
+        <span id="heading">OKUYAT MORGAN JEREMIAH</span>
+       </div>
+       <div id="right-header">
+        <span id="heading"><a href="forex.html">FOREX</a></span>
+        <span id="heading"><a href="index.html">HOME</a></span>
+       </div>
+      </div>
+    </header>
+   <br><br><br>
+   <div id="box">
+    <pre>#include <Wire.h>
+#include <LiquidCrystal_I2C.h>
+#include <RTClib.h>
+#include <DHT.h>
+
+// LCD (I2C address usually 0x27 or 0x3F)
+LiquidCrystal_I2C lcd(0x27, 16, 2);
+
+// RTC
+RTC_DS3231 rtc;
+
+// DHT11
+#define DHTPIN 2
+#define DHTTYPE DHT11
+DHT dht(DHTPIN, DHTTYPE);
+
+// Sensors
+#define ALCOHOL_SENSOR A0
+#define TRIG_PIN 3
+#define ECHO_PIN 4
+
+// Outputs
+#define GREEN_LED 5
+#define RED_LED 6
+#define BLUE_LED 7
+#define YELLOW_LED 8
+#define BUZZER 9
+#define RELAY 10
+#define FAN 11
+
+// Thresholds
+int alcoholLimit = 400;
+int distanceLimit = 50;
+int tempLimit = 30;
+
+void setup() {
+  Serial.begin(9600);
+
+  // LCD
+  lcd.init();
+  lcd.backlight();
+  lcd.setCursor(0,0);
+  lcd.print("SMART HELMET");
+  delay(2000);
+  lcd.clear();
+
+  // RTC
+  rtc.begin();
+
+  // DHT
+  dht.begin();
+
+  // Pins
+  pinMode(TRIG_PIN, OUTPUT);
+  pinMode(ECHO_PIN, INPUT);
+
+  pinMode(GREEN_LED, OUTPUT);
+  pinMode(RED_LED, OUTPUT);
+  pinMode(BLUE_LED, OUTPUT);
+  pinMode(YELLOW_LED, OUTPUT);
+  pinMode(BUZZER, OUTPUT);
+  pinMode(RELAY, OUTPUT);
+  pinMode(FAN, OUTPUT);
+}
+
+void loop() {
+
+  // ===== TIME DISPLAY =====
+  DateTime now = rtc.now();
+
+  lcd.setCursor(0,0);
+  lcd.print("Time: ");
+  if (now.hour() < 10) lcd.print("0");
+  lcd.print(now.hour());
+  lcd.print(":");
+  if (now.minute() < 10) lcd.print("0");
+  lcd.print(now.minute());
+
+  // =======================
+  // 🍺 ALCOHOL DETECTION
+  // =======================
+  int alcoholValue = analogRead(ALCOHOL_SENSOR);
+
+  if (alcoholValue > alcoholLimit) {
+    digitalWrite(RELAY, LOW);
+    digitalWrite(RED_LED, HIGH);
+    digitalWrite(GREEN_LED, LOW);
+    digitalWrite(BUZZER, HIGH);
+
+    lcd.setCursor(0,1);
+    lcd.print("ALCOHOL! STOP  ");
+  } else {
+    digitalWrite(RELAY, HIGH);
+    digitalWrite(GREEN_LED, HIGH);
+    digitalWrite(RED_LED, LOW);
+
+    digitalWrite(BUZZER, LOW);
+
+    lcd.setCursor(0,1);
+    lcd.print("SAFE            ");
+  }
+
+  // =======================
+  // 🚧 OBSTACLE DETECTION
+  // =======================
+  digitalWrite(TRIG_PIN, LOW);
+  delayMicroseconds(2);
+  digitalWrite(TRIG_PIN, HIGH);
+  delayMicroseconds(10);
+  digitalWrite(TRIG_PIN, LOW);
+
+  long duration = pulseIn(ECHO_PIN, HIGH);
+  int distance = duration * 0.034 / 2;
+
+  if (distance < distanceLimit && distance > 0) {
+    digitalWrite(BLUE_LED, HIGH);
+    digitalWrite(BUZZER, HIGH);
+
+    lcd.setCursor(0,1);
+    lcd.print("OBSTACLE!       ");
+  } else {
+    digitalWrite(BLUE_LED, LOW);
+  }
+
+  // =======================
+  // 🌡️ TEMPERATURE
+  // =======================
+  float temp = dht.readTemperature();
+
+  if (temp > tempLimit) {
+    digitalWrite(FAN, HIGH);
+    digitalWrite(YELLOW_LED, HIGH);
+
+    lcd.setCursor(0,1);
+    lcd.print("HOT! FAN ON     ");
+  } else {
+    digitalWrite(FAN, LOW);
+    digitalWrite(YELLOW_LED, LOW);
+  }
+
+  delay(500);
+}</pre>
+   </div>
+<footer>
+ <p align="center">No Copy right</p>
+ <p align="center">Tel: +256 780 958 213</p>
+ <p align="center">Email: omj.okuyatm@gmail.com</p>
+ <p align="center">Intagram: @okuyatmorganjeremiah</p> 
+</footer>
+<!--LAST PHASE--> 
+   <div id="contacts">
+    <a href="mailto:omj.okuyatm@gmail.com?subject=Question%20about%20your%20website&body=Hello%20Morgan,%0D%0A%20I%20am%20from%20your%20website%20and%20I%20have%20some%20question%20concerning%20it.%20My%20concern%20is%20:"><img id="pic" class="one" src="email.jpeg" alt="Email"></a>
+    <a href="https://wa.me/256741842306?text=Hello%20Morgan.%20I%20am%20from%20your%20website%20and%20I%20have%20some%20question%20concerning%20it.%20My%20concern%20is%20:"><img id="pic" class="two" src="whatsapp.jpeg" alt="whatsapp"></a>
+   </div>
+    <div id="menu">
+         <button id="close-side-bar">X</button>
+     <h2>MENU</h2>
+     <p id="heading"><a href="index.html">HOME</a></p>
+     <p id="heading"><a href="forex.html">FOREX</a></p>
+     <p id="heading"><a href="programming.html">PROGRAMMING</a></p>
+     <p id="heading"><a href="contacts.html">CONTACTS</a></p>
+     <p id="heading"><a href="physics.html">PHYSICS</a></p>
+    </div> 
+    <div id="overlay"></div>
+   <script src="javascript.js"></script>
+  </body>
+</html>
