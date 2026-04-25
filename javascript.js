@@ -45,12 +45,13 @@ getOverLay.addEventListener("click",deactivate);
 document.getElementById("form").addEventListener("submit", function(e) {
   e.preventDefault(); // stop page reload
 
-  const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbzNYUc1STxX0jni49QnKYL5XwnnQsM-EQRFNUWRaWhXhww7M6mw2Hzc4SfZ3u7Bsl8u/exec"; 
+  const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbyBzxY4WX51MMGS4Y1TicJSz40H-MOfrEhINQDF1SOBn8VOqAgaO7xEPAJt3eimv2jf/exec"; 
 
   const data = {
     name: this.name.value,
     email: this.email.value,
-    message: this.message.value
+    message: this.message.value,
+    telephone: this.message.value
   };
 
   fetch(WEB_APP_URL, {
