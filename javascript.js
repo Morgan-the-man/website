@@ -1,5 +1,18 @@
 
 
+function calculate() {
+    let account_size = Number(document.getElementById("account_size").value);
+    let percentage_to_risk = Number(document.getElementById("percentage_to_risk").value);
+    let sl_in_pips = Number(document.getElementById("sl_in_pips").value);
+    function lot(account_size,sl,percentage) {
+        let amount = account_size * (percentage/100)
+        let lots = Number((amount / (sl*10)).toFixed(2))
+        return lots
+    }
+    let result = document.getElementById("result");
+    result.innerText = lot(account_size,sl_in_pips,percentage_to_risk);
+} 
+
 //Menu and side bar fetch
 let getOpenSideBar = document.getElementById("open-side-bar");
 let getCloseSideBar = document.getElementById("close-side-bar");
