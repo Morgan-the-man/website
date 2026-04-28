@@ -7,14 +7,6 @@
   <meta name="description" content="we sat and learned the set and forget strategy">
   <link rel="logo" src="logo.jpeg">
   <link rel="stylesheet" href="style.css">
-   <style>
-  body{
-   background-image:url(forex.jpeg);
-   background-repeat:no-repeat;
-   background-size:cover;
-   background-attachment:fixed;
-  } 
-   </style>
   </head>
   <body>
     <header>
@@ -30,6 +22,23 @@
       </div>
     </header>
    <br><br><br>
+     
+   <div id="box">
+    <h2 id="heading">FOREX LOT SIZE CALCULATOR</h2>
+    <p>Hey, this calculator works for only major currency pairs</p>
+   </div>
+   <div id="box">
+    <form action="#TODO">
+     <fieldset>
+      <legend id="heading"><strong>Lot Size calculator</strong></legend>
+      <span><pre>ACCOUNT-SIZE       :</pre></span><input id="account_size" name="account_size" type="number" placeholder="account_size">
+      <span><pre>PERCENTAGE-TO-RISK :</pre></span><input id="percentage_to_risk" name="percentage_to_risk" type="number" placeholder="percentage_to_risk">
+      <span><pre>SL-IN-PIPS         :</pre></span><input id="sl_in_pips" name="sl_in_pips" type="number" placeholder="sl-in-pips"><br><br>
+      <button type="button" onclick="calculate()" id="submit">CALCULATE</button><br><br>
+      <span>Result: </span><span id="result"></span>
+     </fieldset>
+    </form>
+   </div>
 <footer>
  <p align="center">No Copy right</p>
  <p align="center">Tel: +256 780 958 213</p>
