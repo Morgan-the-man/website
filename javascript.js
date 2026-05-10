@@ -11,9 +11,7 @@ function calculate() {
     }
     let result = document.getElementById("result_");
     result.innerText = lot(account_size,sl_in_pips,percentage_to_risk);
-} 
-
-document.getElementById('forexForm').addEventListener('submit', e => {
+    document.getElementById('forexForm').addEventListener('submit', e => {
   e.preventDefault();
   const resultDiv = document.getElementById('result');
   resultDiv.textContent = 'Submitting...';
@@ -35,6 +33,9 @@ document.getElementById('forexForm').addEventListener('submit', e => {
     console.error(err);
   });
 });
+} 
+
+
 
 //Menu and side bar fetch
 let getOpenSideBar = document.getElementById("open-side-bar");
