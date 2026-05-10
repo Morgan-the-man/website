@@ -9,9 +9,32 @@ function calculate() {
         let lots = Number((amount / (sl*10)).toFixed(2))
         return lots
     }
-    let result = document.getElementById("result");
+    let result = document.getElementById("result_");
     result.innerText = lot(account_size,sl_in_pips,percentage_to_risk);
 } 
+
+document.getElementById('forexForm').addEventListener('submit', e => {
+  e.preventDefault();
+  const resultDiv = document.getElementById('result');
+  resultDiv.textContent = 'Submitting...';
+  
+  const formData = new FormData(e.target);
+  const data = Object.fromEntries(formData);
+  
+  fetch('https://script.google.com/macros/s/AKfycbzrVwaZSI5XRuqj__xUiHVu4vIgMzwVp2boK2n41stdetsvLg6WV0vNcLDTFf4FBQ16LQ/exec', {
+    method: 'POST',
+    body: JSON.stringify(data)
+  })
+  .then(res => res.json())
+  .then(data => {
+    resultDiv.textContent = `Trade #${data.tradeNumber} logged successfully!`;
+    e.target.reset(); // clear form
+  })
+  .catch(err => {
+    resultDiv.textContent = 'Error. Check console.';
+    console.error(err);
+  });
+});
 
 //Menu and side bar fetch
 let getOpenSideBar = document.getElementById("open-side-bar");
