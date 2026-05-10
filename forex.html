@@ -28,17 +28,23 @@
     <p>Hey, this calculator works for only major currency pairs</p>
    </div>
    <div id="box">
-    <form action="#TODO">
-     <fieldset>
-      <legend id="heading"><strong>Lot Size calculator</strong></legend>
-      <span><pre>ACCOUNT-SIZE       :</pre></span><input id="account_size" name="account_size" type="number" placeholder="account_size">
-      <span><pre>PERCENTAGE-TO-RISK :</pre></span><input id="percentage_to_risk" name="percentage_to_risk" type="number" placeholder="percentage_to_risk">
-      <span><pre>SL-IN-PIPS         :</pre></span><input id="sl_in_pips" name="sl_in_pips" type="number" placeholder="sl-in-pips"><br><br>
-      <button type="button" onclick="calculate()" id="submit">CALCULATE</button><br><br>
-      <span>Result: </span><span id="result"></span>
-     </fieldset>
+    <form id="forexForm">
+  <fieldset>
+    <legend id="heading"><strong>Lot Size calculator</strong></legend>
+    <span><pre>YOUR NAME       :</pre></span><input name="name" type="text" placeholder="e.g.OKUYAT MORGAN J..."><br><br>
+    <span><pre>CURRENCY PAIR   :</pre></span><input name="currencyPair" type="text" placeholder="e.g. EURUSD" required><br><br>
+    <span><pre>ACCOUNT SIZE    :</pre></span><input name="accountSize" id="account_size" type="number" placeholder="Account Size $" required><br><br>
+    <span><pre>PERCENT TO RISK :</pre></span><input name="percentRisk" id="percentage_to_risk" type="number" placeholder="% Risk per trade" required><br><br>
+    <span><pre>SL IN PIPS      :</pre></span><input name="slPips" id="sl_in_pips" type="number" placeholder="Stop Loss in Pips" required><br><br>
+    <button type="button" onclick="calculate()" id="submit">CALCULATE AND SUBMIT</button><br><br>
+    <span>Result :</span><span id="result_"></span>
+  </fieldset>
     </form>
+     
    </div>
+    
+<div id="box"><p id="result"></p></div>
+    
 <footer>
  <p align="center">No Copy right</p>
  <p align="center">Tel: +256 780 958 213</p>
