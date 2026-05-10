@@ -25,11 +25,11 @@ function calculate() {
   })
   .then(res => res.json())
   .then(data => {
-    resultDiv.textContent = `Trade #${data.tradeNumber} logged successfully!`;
+    resultDiv.textContent = `Trade ${data.tradeNumber} submitted successfully on ${new Date()}!`;
     e.target.reset(); // clear form
   })
   .catch(err => {
-    resultDiv.textContent = 'Error. Check console.';
+    resultDiv.textContent = 'Error. Try again like one more time, dont give up😀😃 Okitegeera';
     console.error(err);
   });
 });
