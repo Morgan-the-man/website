@@ -127,5 +127,25 @@
     </div> 
     <div id="overlay"></div>
    <script src="javascript.js"></script>
+    
+<script>
+const SHEET_CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vSuR2gKE3hfPKESfAWTsc-xocVXlxQ5SCBWPtYoSJb_9EdDjewTyGtBXUat4N0ik_ylSGMLgAP3SLMy/pub?output=csv";
+
+fetch(SHEET_CSV_URL)
+ .then(res => res.text())
+ .then(csv => {
+    const url = csv.split('\n')[0].trim();
+    const linkEl = document.getElementById('ngrok-link');
+    if (url.startsWith('http')) {
+      linkEl.href = url;
+      linkEl.textContent = url;
+    } else {
+      linkEl.textContent = "No link set yet";
+    }
+  })
+ .catch(() => {
+    document.getElementById('ngrok-link').textContent = "Failed to load link";
+  });
+</script>
   </body>
 </html>
